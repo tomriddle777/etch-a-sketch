@@ -1,0 +1,9 @@
+div .square {
+  border: 1px solid green;
+  height: 10px;
+  width: auto;
+}
+
+div {
+  border: 5px solid pink;
+}
