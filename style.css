@@ -1,9 +1,25 @@
-div .square {
-  border: 1px solid green;
-  height: 10px;
-  width: auto;
+.square {
+  border: 1px solid black;
+  height: 25px;
+  width: 25px;
 }
 
-div {
-  border: 5px solid pink;
+.row-div{
+  width: max-content;
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.divs-container {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 10px solid black;
+
+}
+
+.top-container {
+  display: flex;
+  justify-content: center;
 }
