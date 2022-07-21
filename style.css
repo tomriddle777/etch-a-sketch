@@ -1,11 +1,11 @@
 .square {
   border: 1px solid black;
-  flex: 1 0 auto;
+  flex: 1 0 0;
 }
 
 .row-div{
   display: flex;
-  flex: 1 0 auto;
+  flex: 1 0 0;
 }
 
 .divs-container {
@@ -34,4 +34,8 @@ button {
   width: max-content;
   height: max-content;
   padding: 16px;
+}
+
+h1 {
+  margin: 32px 0 0 0;
 }
