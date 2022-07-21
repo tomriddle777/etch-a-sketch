@@ -1,17 +1,16 @@
 .square {
   border: 1px solid black;
-  height: 25px;
-  width: 25px;
+  flex: 1 0 auto;
 }
 
 .row-div{
-  width: max-content;
   display: flex;
   flex: 1 0 auto;
 }
 
 .divs-container {
-  width: max-content;
+  width: 512px;
+  height: 512px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,5 +20,18 @@
 
 .top-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 32px;
+}
+
+.changed {
+  background-color: black;
+}
+
+button {
+  width: max-content;
+  height: max-content;
+  padding: 16px;
 }

@@ -1,29 +1,60 @@
-let divsRow = [],  divsGrid = [], rowDivider = [];
+let originalSize = 16, newSize = 0;
 
-for (let i = 0; i < 16; i++) {
-  divsRow = [];
-  rowDivider[i] = document.createElement('div');
-  rowDivider[i].classList.add('row-div');
-  for (let j = 0; j < 16; j++) {
-    divsRow[j] = document.createElement('div');
-    divsRow[j].classList.add('square', `row-${i + 1}`, `col-${j + 1}`);
+createGrid(originalSize, newSize);
+
+button = document.querySelector('button');
+button.addEventListener('click', () => {
+  let answer = prompt("Enter amount of squares per side (max. 100): ");
+  if (answer && answer <= 100) {
+    newSize = answer;
+  } else {
+    alert("ERROR");
   }
-  divsGrid[i] = divsRow;
-}
+  createGrid(newSize, originalSize);
+  originalSize = newSize;
+})
 
-const divsContainer = document.querySelector('.divs-container');
+function createGrid (size, original) {
+  let divsRow = [],  divsGrid = [], rowDivider = [];
+  const divsContainer = document.querySelector('.divs-container');
 
-for (let i = 0; i < 16; i++) {
-  divsContainer.appendChild(rowDivider[i]);
-}
+  if (newSize != 0){
+    const rowDiv = document.querySelectorAll('.row-div')
+    for (let i = 0; i < original; i++) {
+      divsContainer.removeChild(rowDiv[i]);
+    }
+  }
 
-const rowDiv = document.querySelectorAll('.row-div');
-let rowArray = []
+  rowDivider = [];
 
-rowDiv.forEach(row => rowArray.push(row));
+  for (let i = 0; i < size; i++) {
+    divsRow = [];
+    rowDivider[i] = document.createElement('div');
+    rowDivider[i].classList.add('row-div');
+    for (let j = 0; j < size; j++) {
+      divsRow[j] = document.createElement('div');
+      divsRow[j].classList.add('square', `row-${i + 1}`, `col-${j + 1}`);
+    }
+    divsGrid[i] = divsRow;
+  }
 
-for (let i = 0; i < 16; i++) {
-  for (let j = 0; j < 16; j++) {
-    rowArray[i].appendChild(divsGrid[i][j]);
+  for (let i = 0; i < size; i++) {
+    divsContainer.appendChild(rowDivider[i]);
+  }
+
+  const rowDiv = document.querySelectorAll('.row-div');
+  let rowArray = []
+
+  rowDiv.forEach(row => rowArray.push(row));
+
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      divsGrid[i][j].addEventListener('mouseover', changeColor);
+      rowArray[i].appendChild(divsGrid[i][j]);
+    }
+  }
+
+  function changeColor() {
+    this.classList.add('changed');
   }
 }
